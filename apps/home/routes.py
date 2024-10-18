@@ -11,9 +11,11 @@ from src import GptApi
 from src import AnythingApi
 from src.ProcessImage import process_receipt_image
 
-openai_key = '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'
-client = OpenAI(api_key=openai_key)
-conn = psycopg2.connect("dbname=maindb user=postgres password=abbie78# host=192.168.100.29")
+dbname=os.getenv("DB_NAME")
+dbuser=os.getenv("DB_USERNAME")
+dbpass=os.getenv("DB_PASS")
+dbhost=os.getenv("DB_HOST")
+conn = psycopg2.connect(f"dbname={dbname} user={dbuser} password={dbpass} host={dbhost}")
 
 image_arr = []
 generated_recipe = ""
