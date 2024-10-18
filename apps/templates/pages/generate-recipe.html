@@ -1,0 +1,122 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Generate recipe {% endblock %}
+
+<!-- Element injected in the BODY element -->
+{% block body_class %} sidebar-mini {% endblock body_class %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/static/assets/plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/static/assets/css/adminlte.min.css">
+
+{% endblock stylesheets %}
+
+{% block content %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Generate recipe</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Generate recipe</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <section class="content">
+      <div class="container-fluid">
+
+          <div class="card">
+            <div class="card-header p-2">
+              <ul class="nav nav-pills">
+                <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">GPT3.5</a></li>
+                <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Llama-8b</a></li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <div class="tab-content">
+                <!-- GPT Tab -->
+                <div class="tab-pane active" id="activity">
+                  <div class="row">
+                    <div class="col-12">
+                        <form action="/recipe-generate-gpt" method="post">
+                          <div class="form-group">
+                            <label>Ingredients</label>
+                            <input class="form-control" type="text" name="ingredients" placeholder="Enter ingredients here. Eg. chicken breast, ground black pepper">
+                          </div>
+                          <div class="form-group">
+                            <label>Enter specific prompts</label>
+                            <textarea class="form-control" rows="3" name="prompt" placeholder="Enter any prompt..."></textarea>
+                          </div>
+                          <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="Generate">
+                          </div>
+                        </form>
+                      {% if recipeText %}
+                        <p>{{ recipeText|safe }}</p>
+                      {% endif %}
+
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Llama Tab -->
+                <div class="tab-pane" id="timeline">
+                  <div class="row">
+                    <div class="col-12">
+                        <form action="/recipe-generate-llama" method="post">
+                          <div class="form-group">
+                            <label>Recipe</label>
+                            <input class="form-control" type="text" name="dish" placeholder="Enter a recipe name..">
+                          </div>
+                          <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="Generate">
+                          </div>
+                        </form>
+                      {% if recipeText %}
+                        <p>{{ recipeText|safe }}</p>
+                      {% endif %}
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+  <!-- jQuery -->
+  <script src="/static/assets/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="/static/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="/static/assets/js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="/static/assets/js/demo.js"></script>
+
+{% endblock javascripts %}

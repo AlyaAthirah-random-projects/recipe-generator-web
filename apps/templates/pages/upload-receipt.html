@@ -1,0 +1,152 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Upload receipt {% endblock %}
+
+<!-- Element injected in the BODY element -->
+{% block body_class %} {% endblock body_class %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/static/assets/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ekko Lightbox -->
+  <link rel="stylesheet" href="/static/assets/plugins/ekko-lightbox/ekko-lightbox.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/static/assets/css/adminlte.min.css">
+
+{% endblock stylesheets %}
+
+{% block content %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Upload receipt</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Upload receipt</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        {% if images %}
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-12">
+                <div class="info-box">
+<!--                  <a href="https://via.placeholder.com/1200/FFFFFF.png?text=1" data-toggle="lightbox" data-title="sample 1 - white">-->
+    <!--                  <img src="https://via.placeholder.com/300/FFFFFF?text=1" class="img-fluid mb-2" alt="white sample">-->
+                    <img src="data:image/png;base64,{{ images[0] }}" class="img-fluid mb-2 center" style="max-height: 500px" alt="Image 1">
+<!--                  </a>-->
+                </div>
+              </div>
+            <div class="col-md-3 col-sm-6 col-12">
+                <div class="info-box">
+                    <img src="data:image/png;base64,{{ images[1] }}" class="img-fluid mb-2 center" style="max-height: 500px" alt="Image 2">
+                </div>
+              </div>
+            <div class="col-md-3 col-sm-6 col-12">
+                <div class="info-box">
+                    <img src="data:image/png;base64,{{ images[2] }}" class="img-fluid mb-2 center" style="max-height: 500px" alt="Image 3">
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-12 center">
+                <div class="info-box">
+                    <img src="data:image/png;base64,{{ images[3] }}" class="img-fluid mb-2 center" style="max-height: 500px" alt="Image 4">
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <div class="row">
+          <div class="col-12">
+              <div class="card">
+                  <div class="card-header d-flex p-0">
+                      <h3 class="card-title p-3">Upload image</h3>
+                  </div>
+                  <div class="card-body">
+                      <div class="tab-content">
+                          <div class="tab-pane fade show active" id="product-desc" role="tabpanel" aria-labelledby="product-desc-tab">
+                            Make sure the receipt:
+                              <br>
+                            1. Upright
+                              <br>
+                            2. Readable text
+                              <br>
+                            3. On a dark enough background
+                          </div>
+                          <br>
+                          <div class="tab-pane active" id="tab_1">
+                            <form action="/upload" method="post" enctype="multipart/form-data">
+                                <input type="file" name="file">
+                                <input type="submit" value="Upload">
+                            </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+  <!-- jQuery -->
+  <script src="/static/assets/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="/static/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- jQuery UI -->
+  <script src="/static/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+  <!-- Ekko Lightbox -->
+  <script src="/static/assets/plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="/static/assets/js/adminlte.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="/static/assets/js/demo.js"></script>
+  <!-- Filterizr-->
+  <script src="/static/assets/plugins/filterizr/jquery.filterizr.min.js"></script>
+  <!-- Page specific script -->
+  <script>
+    $(function () {
+      $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox({
+          alwaysShowClose: true
+        });
+      });
+
+      $('.filter-container').filterizr({gutterPixels: 3});
+      $('.btn[data-filter]').on('click', function() {
+        $('.btn[data-filter]').removeClass('active');
+        $(this).addClass('active');
+      });
+    })
+  </script>
+<style>
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+{% endblock javascripts %}

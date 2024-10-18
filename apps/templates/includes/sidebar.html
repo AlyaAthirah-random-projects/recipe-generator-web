@@ -1,0 +1,44 @@
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="recipe" class="brand-link">
+<!--      <img src="/static/assets/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">-->
+      <span class="brand-text font-weight-light" style="padding: 16px;">AI Recipe Generator</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            <a href="upload-receipt" class="nav-link {% if 'widgets' in segment %} active {% endif %}">
+<!--              <i class="nav-icon fas fa-th"></i>-->
+              <p>
+                Upload receipt
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="recipe" class="nav-link {% if 'widgets' in segment %} active {% endif %}">
+              <p>
+                Generate recipe
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="groceries" class="nav-link {% if 'widgets' in segment %} active {% endif %}">
+              <p>
+                View items
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+  
