@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-openai_key = os.getenv("OPENAPI_KEY")
+openai_key = os.getenv("OPENAI_API_KEY")
 client = OpenAI(api_key=openai_key)
 
 dbname=os.getenv("DB_NAME")
