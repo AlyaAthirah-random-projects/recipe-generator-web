@@ -5,9 +5,13 @@ import psycopg2
 from openai import OpenAI
 from dateutil import parser
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 openai_key = os.getenv("OPENAPI_KEY")
 client = OpenAI(api_key=openai_key)
+
 dbname=os.getenv("DB_NAME")
 dbuser=os.getenv("DB_USERNAME")
 dbpass=os.getenv("DB_PASS")
